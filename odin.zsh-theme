@@ -1,21 +1,11 @@
 # The prompt #
-PROMPT=' $(_user_host)%{$fg[magenta]%}%c $(git_prompt_status)%{$reset_color%}→ '
+PROMPT='%{$fg[magenta]%}%c $(git_prompt_status)%{$reset_color%}→ '
 
 # The right-hand prompt
 RPROMPT='$(git_prompt_info)%{$reset_color%}%{$fg[magenta]%}$(_git_time_since_commit) ${_return_status}'
 
 local _return_status="%{$fg[red]%}%(?..⍉)%{$reset_color%}"
 
-function _user_host() {
-  if [[ -n $SSH_CONNECTION ]]; then
-    me="%n@%m"
-  elif [[ $LOGNAME != $USER ]]; then
-    me="%n"
-  fi
-  if [[ -n $me ]]; then
-    echo "%{$fg[cyan]%}$me%{$reset_color%}:"
-  fi
-}
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
